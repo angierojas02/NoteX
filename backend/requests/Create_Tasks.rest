@@ -1,0 +1,11 @@
+POST http://localhost:3000/tasks
+content-type: application/json
+Cookie: 
+
+{
+    "title": "Esta tarea es la segunda de Angie",
+    "description": "Esta tarea es la segunda de Angie",
+    "priority": "Alta",
+    "status": "Pendiente",
+    "userId": "6a62c84db84984717350d6e4"
+}
