@@ -3,6 +3,20 @@ import { validateUser } from '../schema/User.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
+
+const getAllUsers = async (req, res, next) => {
+
+    try {
+        const allUser = await User.find().populate('taskId', 'title description')
+        return res.status(200).json({
+            ok: true,
+            data: allUser
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 const registerUser = async (req, res, next) => {
     try {
 
@@ -11,7 +25,7 @@ const registerUser = async (req, res, next) => {
         
         //SI NO CORRESPONDEN, ES UN ERROR
         if (!result.success) {
-            const errorValidationUser = new Error('Datos de registro inválidos')
+            const errorValidationUser = new Error('Invalid registration data')
             errorValidationUser.statusCode = 400
             errorValidationUser.detalles = result.error.format()
             return next(errorValidationUser)
@@ -23,7 +37,7 @@ const registerUser = async (req, res, next) => {
         //VERIFICAMOS QUE EL USUARIO YA EXISTE, SI SÍ, SE LANZA OTRO ERROR
         const userExists = await User.findOne({ $or: [{ email }, { username }] })
         if (userExists) {
-            const errorDuplicated = new Error('El usuario o correo ya existen!')
+            const errorDuplicated = new Error('The username or email already exists!')
             errorDuplicated.statusCode = 409
             return next(errorDuplicated)
         }
@@ -43,7 +57,7 @@ const registerUser = async (req, res, next) => {
 
         return res.status(201).json({
             ok: true,
-            message: 'Usuario creado con éxito'
+            message: 'User created successfully'
         })
 
     } catch (error) {
@@ -53,24 +67,25 @@ const registerUser = async (req, res, next) => {
 
 const loginUser = async (req, res, next) => {
     try {
-        const {email, password} = req.body
+        const {username, password} = req.body
 
-        const user = await User.findOne({ email })
-        if (!user) {
-            const errorAuth = new Error('Correo o contraseña incorrectos')
+        const userAuth = await User.findOne({ username })
+
+        if (!userAuth) {
+            const errorAuth = new Error('Incorrect email or password')
             errorAuth.statusCode = 401
             return next(errorAuth)
         }
 
-        const isMatchPass = await bcrypt.compare(password, user.password)
+        const isMatchPass = await bcrypt.compare(password, userAuth.password)
         if (!isMatchPass) {
-            const errorAuth = new Error('Correo o contraseña incorrectos')
+            const errorAuth = new Error('Incorrect email or password')
             errorAuth.statusCode = 401
             return next(errorAuth)
         }
 
         const token = jwt.sign(
-            { uid: user._id, role: user.role },
+            { uid: userAuth._id, username: userAuth.username, role: userAuth.role },
             process.env.JWT_SECRET,
             { expiresIn: '24h'}
         )
@@ -84,8 +99,8 @@ const loginUser = async (req, res, next) => {
 
         return res.status(200).json({
             ok: true,
-            message: 'Inicio de sesión exitoso',
-            user: {username: user.username, role: user.role }
+            message: 'Login successful',
+            user: {id:userAuth._id, username: userAuth.username, role: userAuth.role }
         })
 
     } catch (error) {
@@ -103,9 +118,17 @@ const logoutUser = (req, res, next) => {
 
         return res.status(200).json({
             ok: true,
-            message: 'Sesión cerrada'
+            message: 'Logged out successfully'
         })
     } catch (error) {
         next(error)
     }
+}
+
+
+export default {
+    getAllUsers,
+    registerUser,
+    loginUser,
+    logoutUser
 }
