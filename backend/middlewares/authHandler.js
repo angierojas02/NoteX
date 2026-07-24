@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/User'
+import User from '../models/User.js'
 
 export const authValidate = async (req, res, next) => {
     try {
-        const token = req.cookies.token
+        const token = req.cookies?.token
 
         if(!token) {
-            const errorAuth = new Error("Unauthorized. Please, loggin first")
+            const errorAuth = new Error("Unauthorized. Please, sign in first")
             errorAuth.statusCode = 401
             return next(errorAuth)
         }
@@ -26,6 +26,20 @@ export const authValidate = async (req, res, next) => {
         next()
 
     } catch(error) {
+        if (error instanceof jwt.TokenExpiredError) {
+            return res.status(401).json({
+                success: false,
+                code: 'AUTH_TOKEN_EXPIRED',
+                message: 'Session expired. Please sign in again.'
+            })
+        }
+        if (error instanceof jwt.JsonWebTokenError) {
+            return res.status(403).json({
+                success: false,
+                code: 'AUTH_TOKEN_INVALID',
+                message: 'Invalid authentication token.'
+            })
+        }
         next(error)
     }
 }
