@@ -19,7 +19,12 @@ const taskSchema = new Schema({
     type: String,
     default: "Pendiente",
     enum: ['Pendiente', 'En proceso', 'Completada']
-  }
+  },
+  userId: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }]
 });
 
 
