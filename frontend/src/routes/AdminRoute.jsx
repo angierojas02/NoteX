@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/authContext.jsx'
-import { Spinner } from './UI/LoadingDesign.jsx'
+import { Spinner } from '../components/UI/LoadingDesign.jsx'
 
 
 export const AdminRoute = () => {
