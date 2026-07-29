@@ -1,6 +1,6 @@
 import { Target } from '../components/Target'
 import { TaskForm } from '../components/TaskForm'
-import { useTasks } from '../hooks/useTasks'
+import { useTasks } from '../hooks/useTasks.js'
 
 function Dashboard () {
   
@@ -33,9 +33,9 @@ function Dashboard () {
             .filter(tsk => tsk.status === "Pendiente")
             .map(tsk => (
               <Target 
-                key={tsk._id}
+                key={tsk._id || tsk.id}
                 {...tsk}
-                onDelete={deleteTask}
+                onDelete={() => deleteTask(tsk._id || tsk.id)}
                 onModify={modifyTask}
                 onSelectEdit={() => setTaskToEdit(tsk)}
               />
@@ -53,9 +53,9 @@ function Dashboard () {
             .filter(tsk => tsk.status === "En proceso")
             .map(tsk => (
               <Target 
-                key={tsk._id}
+                key={tsk._id || tsk.id}
                 {...tsk}
-                onDelete={deleteTask}
+                onDelete={() => deleteTask(tsk._id || tsk.id)}
                 onModify={modifyTask}
                 onSelectEdit={() => setTaskToEdit(tsk)}
               />
@@ -73,9 +73,9 @@ function Dashboard () {
             .filter(tsk => tsk.status === "Completada")
             .map(tsk => (
               <Target 
-                key={tsk._id}
+                key={tsk._id || tsk.id}
                 {...tsk}
-                onDelete={deleteTask}
+                onDelete={() => deleteTask(tsk._id || tsk.id)}
                 onModify={modifyTask}
               />
             ))}
