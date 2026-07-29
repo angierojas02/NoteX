@@ -3,10 +3,10 @@ import RegisterPage from '../pages/RegisterPage'
 import LoginPage from '../pages/LoginPage'
 import Dashboard from '../pages/DashboardNotes'
 import AdminPage from '../pages/AdminPage' 
-import { AdminRoute } from '../components/AdminRoute' 
+import { AdminRoute } from '../routes/AdminRoute' 
 import { AuthProvider } from '../context/authProvider'
 import { MainLayout } from '../layouts/MainLayout'
-import { ProtectedRoute } from '../components/ProtectedRoute'
+import { ProtectedRoute } from '../routes/ProtectedRoute'
 
 const AuthLayout = () => {
     return (
