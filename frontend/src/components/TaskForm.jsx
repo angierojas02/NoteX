@@ -38,8 +38,8 @@ export function TaskForm ({addNewTask, taskToEdit, onUpdateTask}) {
     }
 
     return (
-        <div className="text-white">
-            <h2>Ingrese una nueva tarea</h2>
+        <div className="text-white font-raleway">
+            <h2 className="text-center mb-2 font-black text-2xl">Ingrese una nueva tarea</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2">
                 <input onChange={(e) => setTitle(e.target.value)} value={title} type="text" className="bg-slate-950 border border-slate-800 text-white p-3 rounded-xl focus:outline-none focus:border-amber-500 transition-colors"/>
                 <textarea onChange={(e) => setDescription(e.target.value)} value={description} name="" id="" className="bg-slate-950 border border-slate-800 text-white p-3 rounded-xl focus:outline-none focus:border-amber-500 transition-colors"></textarea>
@@ -49,7 +49,7 @@ export function TaskForm ({addNewTask, taskToEdit, onUpdateTask}) {
                     <option value="Media">Media</option>
                     <option value="Baja">Baja</option>
                 </select>
-                <button className="bg-purple-300 text-slate-950 font-bold py-1.5 rounded-xl hover:opacity-90 transition-opacity mt-2 shadow-md shadow-orange-500/20" type="submit">{taskToEdit ? "Guardar cambios" : "Agregar"}</button>
+                <button className="bg-slate-800 font-semibold text-white py-1.5 rounded-xl border-3 border-transparent hover:border-blue-950 transition-all duration-300 mt-2 " type="submit">{taskToEdit ? "Guardar cambios" : "Agregar"}</button>
             </form>
         </div>
     )
