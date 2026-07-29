@@ -10,8 +10,8 @@
         "Pendiente": "bg-red-500"
     }
 
- export function Target ({_id, title, description, priority, status, onDelete, onModify, onSelectEdit}) {
-    
+ export function Target ({_id, id, title, description, priority, status, onDelete, onModify, onSelectEdit}) {
+    const taskId = _id || id
     let nextStatus = ""
     let buttonText = ""
 
@@ -28,11 +28,18 @@
             <div className="p-3 flex flex-col gap-1">
                 <h3 className="text-base mb-1 font-bold">{title.toUpperCase()}</h3>
                 <p className="text-sm mb-1">{description}</p>
-                <button onClick={() => onModify(_id, nextStatus)} className={`font-bold bg-amber-50 rounded-2xl ${colorStatus[status]}`}>{buttonText}</button>
-                <p className={`text-xs pl-1 pr-1.5 w-fit text-white rounded-full text-centers font-semibold border-2 border-transparent bg-clip-border bg-linear-to-r ${colorPriority[priority]}`}>{priority}</p>
+                {status !== "Completada" && (
+                    <button onClick={() => onModify(taskId, nextStatus)}
+                        className={`font-bold rounded-2xl ${colorStatus[status]}`}>
+                        {buttonText}
+                    </button>
+                )}
+                
+                <p className={`text-xs pl-1 pr-1.5 w-fit text-white rounded-full text-center font-semibold border-2 border-transparent bg-clip-border bg-linear-to-r ${colorPriority[priority]}`}>{priority}</p>
+                {/* {console.log(`id: ${taskId}, Nextstatus: ${nextStatus}`)} */}
             </div>
             <div className="border-t-2 border-slate-600/50 rounded-b-2xl flex justify-between">
-                <button onClick={() => onDelete(_id)} className="font-semibold flex-1 bg-slate-500/80 p-1">Eliminar</button>
+                <button onClick={() => onDelete(taskId)} className="font-semibold flex-1 bg-slate-500/80 p-1">Eliminar</button>
                 <button onClick={onSelectEdit} className="font-semibold flex-1 bg-slate-400">Editar</button>
             </div>
               
