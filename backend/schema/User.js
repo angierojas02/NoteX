@@ -19,9 +19,16 @@ const userSchema = z.object({
 
     role: z
     .enum(['User', 'Admin', 'Tester'])
-    .default('User')
+    .default('User'),
+
 })
+
+const editUserSchema = userSchema.omit({ password: true })
 
 export function validateUser (object) {
     return userSchema.safeParse(object)
+}
+
+export function validateEditUser(object) {
+    return editUserSchema.safeParse(object)
 }
