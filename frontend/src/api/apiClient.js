@@ -1,7 +1,8 @@
 
 export const apiClient = async (endpoint, options = {}) => {
 
-    const API_USERS = 'http://localhost:3000/users'
+    const BASE_URL = import.meta.env.VITE_API_URL
+    const API_USERS = `${BASE_URL}/users`
 
     const defaultHeaders = {
         'Content-type':'application/json',
