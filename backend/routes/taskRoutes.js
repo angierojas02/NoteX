@@ -1,7 +1,7 @@
 import express from 'express'
 import Task from '../models/Tasks.js'
 import taskController from '../controllers/taskController.js'
-import { authorizeRoles } from '../middlewares/authRoje.js'
+import { authorizeRoles } from '../middlewares/authRole.js'
 import { authValidate } from '../middlewares/authHandler.js'
 
 const taskRouter = express.Router()
