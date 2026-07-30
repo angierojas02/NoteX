@@ -1,6 +1,6 @@
 import express from 'express'
 import User from '../models/User.js'
-import UsersController from '../controllers/UsersController.js'
+import UsersController from '../controllers/usersController.js'
 import { authorizeRoles } from '../middlewares/authRole.js'
 import { authValidate } from '../middlewares/authHandler.js'
  
