@@ -1,11 +1,10 @@
 POST http://localhost:3000/tasks
 content-type: application/json
-Cookie: 
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2YTYyYzg0ZGI4NDk4NDcxNzM1MGQ2ZTQiLCJ1c2VybmFtZSI6ImdpZ2kwMiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4NTAxNjI3OSwiZXhwIjoxNzg1MTAyNjc5fQ.w8wdtYn6GSUdjwIKYOTlReHl3kOOhvglOoBEvBODWTc
 
 {
     "title": "Esta tarea es la segunda de Angie",
     "description": "Esta tarea es la segunda de Angie",
     "priority": "Alta",
-    "status": "Pendiente",
-    "userId": "6a62c84db84984717350d6e4"
+    "status": "Pendiente"
 }

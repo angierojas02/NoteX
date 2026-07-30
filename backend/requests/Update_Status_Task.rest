@@ -1,0 +1,7 @@
+PATCH http://localhost:3000/tasks/6a653018f8eb476b8bae816a
+content-type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2YTYyYzg0ZGI4NDk4NDcxNzM1MGQ2ZTQiLCJ1c2VybmFtZSI6ImdpZ2kwMiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4NTAxNjU5OSwiZXhwIjoxNzg1MTAyOTk5fQ.EH8lbRhALlz9HYA7OfdEp5RFKyndrzOmLeRz3Dn99Jo
+
+{
+   "status": "Completada"
+}

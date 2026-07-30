@@ -1,0 +1,9 @@
+PATCH http://localhost:3000/users/6a654b4ac6f4d12eab7106e2
+content-type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2YTYyYzg0ZGI4NDk4NDcxNzM1MGQ2ZTQiLCJ1c2VybmFtZSI6ImdpZ2kwMiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4NTE5NTk0OSwiZXhwIjoxNzg1MjgyMzQ5fQ.XQxn4kyq0fnJPgRWFWew1Y9JEnadHspEIKpWpHNXs3o
+
+{
+   "username": "angie-modify",
+   "email": "something@gmail.com",
+   "role": "Admin"
+}

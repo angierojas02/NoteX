@@ -1,1 +1,2 @@
-GET http://localhost:3000/users
+GET http://localhost:3000/users/admin
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2YTY1NGI0YWM2ZjRkMTJlYWI3MTA2ZTIiLCJ1c2VybmFtZSI6ImFuZ2llLXVzZXIiLCJyb2xlIjoiVXNlciIsImlhdCI6MTc4NTAzMzUyMSwiZXhwIjoxNzg1MTE5OTIxfQ.kagdjNx3enU5Vb0UxCXot4kIl8DLEUdTGswanCyeLuA
