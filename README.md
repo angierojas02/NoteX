@@ -9,6 +9,10 @@
 * **Frontend App:** [https://notex-frontend.vercel.app](https://notex-frontend.vercel.app)
 * **Backend API:** [https://notex-backend-vgmu.onrender.com](https://notex-backend-vgmu.onrender.com)
 
+> 🔑 **Cuenta de Prueba (Demo):**
+> * **Usuario:** `user123`
+> * **Contraseña:** `uSer_pRUeba_123456`
+
 ---
 
 ## Tecnologías Utilizadas
