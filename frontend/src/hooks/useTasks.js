@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const BASE_URL = import.meta.env.VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://notex-backend-vgmu.onrender.com'
 const API_URL = `${BASE_URL}/tasks`
 
 export function useTasks () {

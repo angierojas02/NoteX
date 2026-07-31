@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 
-const API_URL = import.meta.env.VITE_API_URL
+
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://notex-backend-vgmu.onrender.com'
+const API_URL = `${BASE_URL}/users`
 
 export function useUsers () {
     const [users, setUsers ] = useState([])
