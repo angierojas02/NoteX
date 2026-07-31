@@ -78,9 +78,9 @@ export const AuthProvider = ({ children }) => {
                 if (data?.user) {
                     setUser(data.user)
                 }
-                console.log('Login successfully!',data)
+                //console.log('Login successfully!',data)
                 navigate('/dashboard')
-                return { success: true, data }
+                //return { success: true, data }
             } catch (err) {
                 console.error('Error capturado API CLIENT: ', err.message)
                 setError(err.message)
