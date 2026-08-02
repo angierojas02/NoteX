@@ -46,6 +46,15 @@
 
 ---
 
+## Demostración
+
+<p align="center">
+  <img src="./assets/login-demo.gif" alt="Autenticación y Login" width="450" />
+  <img src="./assets/crud-demo.gif" alt="Creación de Notas" width="450" />
+</p>
+
+---
+
 ## Estructura del Proyecto
 
 ```text
