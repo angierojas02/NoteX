@@ -23,7 +23,7 @@ app.use(cors({
 
 const PORT = process.env.PORT ?? 1234
 
-app.get('/stauts', (req, res) => {
+app.get('/status', (req, res) => {
   res.status(200).send('OK')
 })
 
