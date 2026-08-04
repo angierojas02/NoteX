@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
                             setMessage(`Iniciando servidor (intento ${attempts}. Aguarde unos segundos...)`)
                         }
 
-                        const res = await fetch('https://notex-backend-vgmu.onrender.com/health', {method: 'GET'})
+                        const res = await fetch('https://notex-backend-vgmu.onrender.com/status', {method: 'GET'})
                         if (res.ok) {
                             isConnected = true   
                         } else {
