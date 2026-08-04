@@ -7,6 +7,7 @@ import { useEffect } from "react"
 export const AuthProvider = ({ children }) => {
         const [ user, setUser ] = useState(null)
         const [ error, setError ] = useState(null)
+        const [ message, setMessage ] = useState('Conectando...')
 
         const navigate = useNavigate()
 
@@ -15,6 +16,21 @@ export const AuthProvider = ({ children }) => {
 
         useEffect(() => {
             const checkAuth = async () => {
+                let isConnected = false
+                let attempts = 1
+                while (!isConnected) {
+                    try {
+                        if (attempts > 1) {
+                            setMessage(`Iniciando servidor (intento ${attempts}. Aguarde unos segundos...)`)
+                        }
+
+                        await apiClient('health', {method: 'GET'})
+                        isConnected = true
+                    } catch (err) {
+                        attempts++
+                        await new Promise((resolve) => setTimeout(resolve, 4000))
+                    }
+                }
                 try {
                     const data = await apiClient('/verify', {
                         method: 'GET'
@@ -102,6 +118,14 @@ export const AuthProvider = ({ children }) => {
                 setError(null)
                 navigate('/login')
             }
+        }
+
+        if (loading) {
+            return (
+                <div className="flex justify-center items-center h-screen">
+                    <p>{message}</p>
+                </div>
+            )
         }
 
         return (

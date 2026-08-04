@@ -23,6 +23,9 @@ app.use(cors({
 
 const PORT = process.env.PORT ?? 1234
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK')
+})
 
 app.use('/tasks', taskRoutes)
 app.use('/users', userRoutes)
