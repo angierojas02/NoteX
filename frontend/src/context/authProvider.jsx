@@ -24,9 +24,14 @@ export const AuthProvider = ({ children }) => {
                             setMessage(`Iniciando servidor (intento ${attempts}. Aguarde unos segundos...)`)
                         }
 
-                        await apiClient('health', {method: 'GET'})
-                        isConnected = true
-                    } catch (err) {
+                        const res = await fetch('https://notex-backend-vgmu.onrender.com/health', {method: 'GET'})
+                        if (res.ok) {
+                            isConnected = true   
+                        } else {
+                            throw new Error('Server error')
+                        }
+                        
+                    } catch {
                         attempts++
                         await new Promise((resolve) => setTimeout(resolve, 4000))
                     }
@@ -38,7 +43,7 @@ export const AuthProvider = ({ children }) => {
                     if (data?.user) {
                         setUser(data.user)
                     }
-                } catch (error) {
+                } catch {
                     // setError(error)
                     setUser(null)
                 } finally {
